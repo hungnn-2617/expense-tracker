@@ -17,10 +17,10 @@
 
 **Purpose**: Install dependencies, initialize Prisma, and create base configuration
 
-- [ ] T001 Install project dependencies: prisma, @prisma/client, recharts, zod, date-fns, and @radix-ui/react-dialog via `pnpm add`
-- [ ] T002 [P] Create Prisma schema with TransactionType enum, Category model, and Transaction model (with indexes and relations) at prisma/schema.prisma per data-model.md
-- [ ] T003 [P] Create shared TypeScript types (TransactionType, Period, DashboardSummary, CategoryBreakdown, TimeSeriesPoint, PaginatedResult, TransactionFilters, ActionState) at app/lib/types.ts per contracts/api-routes.md
-- [ ] T004 [P] Create Prisma client singleton with global caching for development at app/lib/db.ts
+- [x] T001 Install project dependencies: prisma, @prisma/client, recharts, zod, date-fns, and @radix-ui/react-dialog via `pnpm add`
+- [x] T002 [P] Create Prisma schema with TransactionType enum, Category model, and Transaction model (with indexes and relations) at prisma/schema.prisma per data-model.md
+- [x] T003 [P] Create shared TypeScript types (TransactionType, Period, DashboardSummary, CategoryBreakdown, TimeSeriesPoint, PaginatedResult, TransactionFilters, ActionState) at app/lib/types.ts per contracts/api-routes.md
+- [x] T004 [P] Create Prisma client singleton with global caching for development at app/lib/db.ts
 
 ---
 
@@ -30,18 +30,18 @@
 
 **CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T005 Generate Prisma client and push schema to SQLite database via `pnpm prisma generate && pnpm prisma db push`
-- [ ] T006 Create seed script with 12 default Vietnamese categories (8 expense + 4 income) at prisma/seed.ts per data-model.md seed data table
-- [ ] T007 Configure prisma.seed in package.json and run `pnpm prisma db seed` to populate default categories
-- [ ] T008 [P] Create VND currency formatter (using Intl.NumberFormat vi-VN) and date formatters at app/lib/format.ts
-- [ ] T009 [P] Create general utility functions (cn for classnames, generateCsvFilename) at app/lib/utils.ts
-- [ ] T010 [P] Create Zod validation schema for transaction (type, amount, categoryId, date, description) at app/lib/validations/transaction.ts per contracts/api-routes.md
-- [ ] T011 [P] Create Zod validation schema for category (name, type, icon, color) at app/lib/validations/category.ts per contracts/api-routes.md
-- [ ] T012 [P] Create category service with getCategories(type?) and getCategoryById(id) at app/lib/services/category.ts per contracts/api-routes.md
-- [ ] T013 [P] Create transaction service with getTransactions(filters) and getTransactionById(id) returning PaginatedResult at app/lib/services/transaction.ts per contracts/api-routes.md
-- [ ] T014 Create reusable UI components (Button, Input, Select, Card, Modal, Pagination) at app/components/ui/ with Tailwind CSS 4 styling and responsive design
-- [ ] T015 Create root layout with sidebar navigation (links to Dashboard, Transactions, Categories) and mobile-responsive drawer at app/layout.tsx and app/components/layout/Sidebar.tsx per FR-019
-- [ ] T016 [P] Create global boundary files: app/loading.tsx (skeleton), app/error.tsx (error boundary with "use client"), and app/not-found.tsx (404 page)
+- [x] T005 Generate Prisma client and push schema to SQLite database via `pnpm prisma generate && pnpm prisma db push`
+- [x] T006 Create seed script with 12 default Vietnamese categories (8 expense + 4 income) at prisma/seed.ts per data-model.md seed data table
+- [x] T007 Configure prisma.seed in package.json and run `pnpm prisma db seed` to populate default categories
+- [x] T008 [P] Create VND currency formatter (using Intl.NumberFormat vi-VN) and date formatters at app/lib/format.ts
+- [x] T009 [P] Create general utility functions (cn for classnames, generateCsvFilename) at app/lib/utils.ts
+- [x] T010 [P] Create Zod validation schema for transaction (type, amount, categoryId, date, description) at app/lib/validations/transaction.ts per contracts/api-routes.md
+- [x] T011 [P] Create Zod validation schema for category (name, type, icon, color) at app/lib/validations/category.ts per contracts/api-routes.md
+- [x] T012 [P] Create category service with getCategories(type?) and getCategoryById(id) at app/lib/services/category.ts per contracts/api-routes.md
+- [x] T013 [P] Create transaction service with getTransactions(filters) and getTransactionById(id) returning PaginatedResult at app/lib/services/transaction.ts per contracts/api-routes.md
+- [x] T014 Create reusable UI components (Button, Input, Select, Card, Modal, Pagination) at app/components/ui/ with Tailwind CSS 4 styling and responsive design
+- [x] T015 Create root layout with sidebar navigation (links to Dashboard, Transactions, Categories) and mobile-responsive drawer at app/layout.tsx and app/components/layout/Sidebar.tsx per FR-019
+- [x] T016 [P] Create global boundary files: app/loading.tsx (skeleton), app/error.tsx (error boundary with "use client"), and app/not-found.tsx (404 page)
 
 **Checkpoint**: Foundation ready — database seeded, services available, UI shell rendered
 
@@ -55,15 +55,15 @@
 
 ### Implementation for User Story 1
 
-- [ ] T017 [US1] Create transaction Server Actions (createTransaction, updateTransaction, deleteTransaction) with Zod validation and revalidatePath at app/lib/actions/transaction.ts per contracts/api-routes.md
-- [ ] T018 [P] [US1] Create TransactionForm client component ("use client") with type selector, amount input, category dropdown, date picker, description field, and useActionState integration at app/components/transactions/TransactionForm.tsx
-- [ ] T019 [P] [US1] Create TransactionRow component displaying formatted amount (VND), type badge, category icon+name, date, and description with edit/delete action buttons at app/components/transactions/TransactionRow.tsx
-- [ ] T020 [US1] Create TransactionList component composing TransactionRow items with Pagination at app/components/transactions/TransactionList.tsx
-- [ ] T021 [US1] Create transactions list page (Server Component) reading page from searchParams, calling getTransactions, rendering TransactionList at app/transactions/page.tsx with loading.tsx skeleton
-- [ ] T022 [US1] Create new transaction page loading categories via getCategories, rendering TransactionForm with createTransaction action at app/transactions/new/page.tsx
-- [ ] T023 [US1] Create edit transaction page loading transaction by id and categories, rendering TransactionForm with updateTransaction action at app/transactions/[id]/page.tsx
-- [ ] T024 [US1] Add delete confirmation dialog (using Radix Dialog or Modal component) triggered from TransactionRow delete button, calling deleteTransaction Server Action
-- [ ] T025 [US1] Create dashboard placeholder page that redirects to /transactions at app/(dashboard)/page.tsx (temporary until US2)
+- [x] T017 [US1] Create transaction Server Actions (createTransaction, updateTransaction, deleteTransaction) with Zod validation and revalidatePath at app/lib/actions/transaction.ts per contracts/api-routes.md
+- [x] T018 [P] [US1] Create TransactionForm client component ("use client") with type selector, amount input, category dropdown, date picker, description field, and useActionState integration at app/components/transactions/TransactionForm.tsx
+- [x] T019 [P] [US1] Create TransactionRow component displaying formatted amount (VND), type badge, category icon+name, date, and description with edit/delete action buttons at app/components/transactions/TransactionRow.tsx
+- [x] T020 [US1] Create TransactionList component composing TransactionRow items with Pagination at app/components/transactions/TransactionList.tsx
+- [x] T021 [US1] Create transactions list page (Server Component) reading page from searchParams, calling getTransactions, rendering TransactionList at app/transactions/page.tsx with loading.tsx skeleton
+- [x] T022 [US1] Create new transaction page loading categories via getCategories, rendering TransactionForm with createTransaction action at app/transactions/new/page.tsx
+- [x] T023 [US1] Create edit transaction page loading transaction by id and categories, rendering TransactionForm with updateTransaction action at app/transactions/[id]/page.tsx
+- [x] T024 [US1] Add delete confirmation dialog (using Radix Dialog or Modal component) triggered from TransactionRow delete button, calling deleteTransaction Server Action
+- [x] T025 [US1] Create dashboard placeholder page that redirects to /transactions at app/(dashboard)/page.tsx (temporary until US2)
 
 **Checkpoint**: User Story 1 fully functional — CRUD transactions with pagination. This is the MVP.
 
@@ -77,14 +77,14 @@
 
 ### Implementation for User Story 2
 
-- [ ] T026 [US2] Add dashboard query functions (getDashboardSummary, getCategoryBreakdown, getTimeSeriesData) to app/lib/services/transaction.ts using date-fns for period grouping per contracts/api-routes.md
-- [ ] T027 [P] [US2] Create SummaryCards component displaying total income, total expenses, and net balance formatted in VND at app/components/dashboard/SummaryCards.tsx
-- [ ] T028 [P] [US2] Create ExpensePieChart client component ("use client") using Recharts PieChart with category colors and labels at app/components/dashboard/ExpensePieChart.tsx
-- [ ] T029 [P] [US2] Create IncomeExpenseBarChart client component ("use client") using Recharts BarChart with income/expense grouped bars at app/components/dashboard/IncomeExpenseBarChart.tsx
-- [ ] T030 [P] [US2] Create PeriodSelector client component ("use client") with daily/weekly/monthly toggle buttons updating URL searchParams at app/components/dashboard/PeriodSelector.tsx
-- [ ] T031 [US2] Create EmptyState component for when no transactions exist in the selected period at app/components/dashboard/EmptyState.tsx
-- [ ] T032 [US2] Replace dashboard placeholder with full dashboard page (Server Component) reading period from searchParams, calling dashboard services, rendering SummaryCards + PieChart + BarChart at app/(dashboard)/page.tsx
-- [ ] T033 [US2] Update root layout navigation to highlight Dashboard as the home page and set root `/` to render dashboard
+- [x] T026 [US2] Add dashboard query functions (getDashboardSummary, getCategoryBreakdown, getTimeSeriesData) to app/lib/services/transaction.ts using date-fns for period grouping per contracts/api-routes.md
+- [x] T027 [P] [US2] Create SummaryCards component displaying total income, total expenses, and net balance formatted in VND at app/components/dashboard/SummaryCards.tsx
+- [x] T028 [P] [US2] Create ExpensePieChart client component ("use client") using Recharts PieChart with category colors and labels at app/components/dashboard/ExpensePieChart.tsx
+- [x] T029 [P] [US2] Create IncomeExpenseBarChart client component ("use client") using Recharts BarChart with income/expense grouped bars at app/components/dashboard/IncomeExpenseBarChart.tsx
+- [x] T030 [P] [US2] Create PeriodSelector client component ("use client") with daily/weekly/monthly toggle buttons updating URL searchParams at app/components/dashboard/PeriodSelector.tsx
+- [x] T031 [US2] Create EmptyState component for when no transactions exist in the selected period at app/components/dashboard/EmptyState.tsx
+- [x] T032 [US2] Replace dashboard placeholder with full dashboard page (Server Component) reading period from searchParams, calling dashboard services, rendering SummaryCards + PieChart + BarChart at app/(dashboard)/page.tsx
+- [x] T033 [US2] Update root layout navigation to highlight Dashboard as the home page and set root `/` to render dashboard
 
 **Checkpoint**: Dashboard fully functional with all three visualizations and period switching
 
@@ -98,13 +98,13 @@
 
 ### Implementation for User Story 3
 
-- [ ] T034 [US3] Create category Server Actions (createCategory, updateCategory, deleteCategory) with Zod validation, default-category protection, and revalidatePath at app/lib/actions/category.ts per contracts/api-routes.md
-- [ ] T035 [P] [US3] Create CategoryForm client component ("use client") with name input, type selector, emoji icon picker, hex color picker, and useActionState at app/components/categories/CategoryForm.tsx
-- [ ] T036 [P] [US3] Create CategoryRow component displaying icon, name, type badge, color swatch, and edit/delete buttons (delete disabled for defaults) at app/components/categories/CategoryRow.tsx
-- [ ] T037 [US3] Create CategoryList component composing CategoryRow items grouped by type (Expense / Income) at app/components/categories/CategoryList.tsx
-- [ ] T038 [US3] Create categories page (Server Component) loading categories via getCategories, rendering CategoryList and CategoryForm modal at app/categories/page.tsx
-- [ ] T039 [US3] Handle category deletion cascade: when a category is deleted, associated transactions show "Không phân loại" (Uncategorized) in TransactionRow
-- [ ] T040 [US3] Verify Categories navigation link in Sidebar is active and highlighted when on /categories
+- [x] T034 [US3] Create category Server Actions (createCategory, updateCategory, deleteCategory) with Zod validation, default-category protection, and revalidatePath at app/lib/actions/category.ts per contracts/api-routes.md
+- [x] T035 [P] [US3] Create CategoryForm client component ("use client") with name input, type selector, emoji icon picker, hex color picker, and useActionState at app/components/categories/CategoryForm.tsx
+- [x] T036 [P] [US3] Create CategoryRow component displaying icon, name, type badge, color swatch, and edit/delete buttons (delete disabled for defaults) at app/components/categories/CategoryRow.tsx
+- [x] T037 [US3] Create CategoryList component composing CategoryRow items grouped by type (Expense / Income) at app/components/categories/CategoryList.tsx
+- [x] T038 [US3] Create categories page (Server Component) loading categories via getCategories, rendering CategoryList and CategoryForm modal at app/categories/page.tsx
+- [x] T039 [US3] Handle category deletion cascade: when a category is deleted, associated transactions show "Không phân loại" (Uncategorized) in TransactionRow
+- [x] T040 [US3] Verify Categories navigation link in Sidebar is active and highlighted when on /categories
 
 **Checkpoint**: Category management fully functional — default categories protected, custom CRUD works
 
@@ -118,11 +118,11 @@
 
 ### Implementation for User Story 4
 
-- [ ] T041 [US4] Extend getTransactions in app/lib/services/transaction.ts to support combined filtering (dateFrom, dateTo, type, categoryId, search with case-insensitive LIKE) composing Prisma where clauses
-- [ ] T042 [P] [US4] Create useDebounce hook at app/hooks/useDebounce.ts for debouncing search input (300ms delay)
-- [ ] T043 [P] [US4] Create FilterBar client component ("use client") with date range inputs, type select (All/Income/Expense), and category select dropdown updating URL searchParams at app/components/transactions/FilterBar.tsx
-- [ ] T044 [US4] Create SearchInput client component ("use client") with debounced text input updating URL searchParams at app/components/transactions/SearchInput.tsx (uses useDebounce from T042)
-- [ ] T045 [US4] Integrate FilterBar and SearchInput into transactions page: read all filter params from searchParams, pass to getTransactions, reset pagination to page 1 when filters change at app/transactions/page.tsx
+- [x] T041 [US4] Extend getTransactions in app/lib/services/transaction.ts to support combined filtering (dateFrom, dateTo, type, categoryId, search with case-insensitive LIKE) composing Prisma where clauses
+- [x] T042 [P] [US4] Create useDebounce hook at app/hooks/useDebounce.ts for debouncing search input (300ms delay)
+- [x] T043 [P] [US4] Create FilterBar client component ("use client") with date range inputs, type select (All/Income/Expense), and category select dropdown updating URL searchParams at app/components/transactions/FilterBar.tsx
+- [x] T044 [US4] Create SearchInput client component ("use client") with debounced text input updating URL searchParams at app/components/transactions/SearchInput.tsx (uses useDebounce from T042)
+- [x] T045 [US4] Integrate FilterBar and SearchInput into transactions page: read all filter params from searchParams, pass to getTransactions, reset pagination to page 1 when filters change at app/transactions/page.tsx
 
 **Checkpoint**: Filtering and search fully functional — all filters composable, URL-driven for shareability
 
@@ -136,9 +136,9 @@
 
 ### Implementation for User Story 5
 
-- [ ] T046 [P] [US5] Create CSV generation utility function (array of transactions → CSV string with header row) at app/lib/csv.ts
-- [ ] T047 [US5] Create CSV export route handler (GET /api/transactions/export) with Zod query param validation, filter support, and proper Content-Type/Content-Disposition headers at app/api/transactions/export/route.ts per contracts/api-routes.md
-- [ ] T048 [US5] Add "Export CSV" button to transactions page that triggers download with current filter params as query string; show message when no transactions to export at app/components/transactions/ExportButton.tsx
+- [x] T046 [P] [US5] Create CSV generation utility function (array of transactions → CSV string with header row) at app/lib/csv.ts
+- [x] T047 [US5] Create CSV export route handler (GET /api/transactions/export) with Zod query param validation, filter support, and proper Content-Type/Content-Disposition headers at app/api/transactions/export/route.ts per contracts/api-routes.md
+- [x] T048 [US5] Add "Export CSV" button to transactions page that triggers download with current filter params as query string; show message when no transactions to export at app/components/transactions/ExportButton.tsx
 
 **Checkpoint**: CSV export fully functional — filtered data exports correctly with Vietnamese content
 
@@ -148,11 +148,11 @@
 
 **Purpose**: Responsive design, metadata, accessibility, and quality verification
 
-- [ ] T049 [P] Ensure mobile-responsive layout (320px minimum width per SC-006): test Sidebar drawer, TransactionForm, FilterBar, Dashboard charts, and CategoryForm at all breakpoints
-- [ ] T050 [P] Add metadata to all pages using Next.js Metadata API (static metadata export or generateMetadata) with proper titles and descriptions per Constitution Principle III
-- [ ] T051 [P] Add HTTP security headers (Strict-Transport-Security, X-Content-Type-Options, X-Frame-Options, Referrer-Policy) via next.config.ts headers configuration per Constitution Security Requirements
-- [ ] T052 Run ESLint (`pnpm lint`) and fix all errors to achieve zero-error baseline per Constitution Principle V
-- [ ] T053 Run TypeScript compiler (`pnpm tsc --noEmit`) and fix all type errors per Constitution Principle V
+- [x] T049 [P] Ensure mobile-responsive layout (320px minimum width per SC-006): test Sidebar drawer, TransactionForm, FilterBar, Dashboard charts, and CategoryForm at all breakpoints
+- [x] T050 [P] Add metadata to all pages using Next.js Metadata API (static metadata export or generateMetadata) with proper titles and descriptions per Constitution Principle III
+- [x] T051 [P] Add HTTP security headers (Strict-Transport-Security, X-Content-Type-Options, X-Frame-Options, Referrer-Policy) via next.config.ts headers configuration per Constitution Security Requirements
+- [x] T052 Run ESLint (`pnpm lint`) and fix all errors to achieve zero-error baseline per Constitution Principle V
+- [x] T053 Run TypeScript compiler (`pnpm tsc --noEmit`) and fix all type errors per Constitution Principle V
 
 ---
 

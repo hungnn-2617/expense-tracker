@@ -1,36 +1,116 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Expense Tracker
+
+A personal finance management application built with Next.js 16, React 19, and TypeScript. Track income and expenses, visualize spending patterns, and export financial data — all from a clean, responsive interface.
+
+## Features
+
+### Transaction Management
+- Record income and expense transactions with amount, category, date, and description
+- Edit or delete existing transactions with confirmation prompts
+- Paginated transaction list sorted by most recent
+- All monetary values displayed in Vietnamese Dong (VND)
+
+### Dashboard & Analytics
+- Summary cards showing total income, total expenses, and net balance
+- Pie chart breaking down expenses by category
+- Bar chart comparing income vs. expenses over time
+- Toggle between daily, weekly, and monthly views
+
+### Category Management
+- 12 pre-loaded default categories (8 expense, 4 income) in Vietnamese
+- Create custom categories with name, emoji icon, and color
+- Edit or delete custom categories (defaults are protected)
+- Deleted categories gracefully cascade — transactions become "Uncategorized"
+
+### Filter & Search
+- Filter transactions by date range, type (income/expense), and category
+- Search transactions by description with debounced input
+- All filters are URL-driven and composable
+
+### CSV Export
+- Export the currently filtered transaction list as a CSV file
+- Columns: Date, Type, Category, Description, Amount
+- Handles empty results with an informational message
+
+## Tech Stack
+
+| Layer        | Technology                          |
+|--------------|-------------------------------------|
+| Framework    | Next.js 16 (App Router)             |
+| Language     | TypeScript 5 (strict mode)          |
+| UI           | React 19 + Tailwind CSS 4           |
+| Database     | SQLite (dev) / PostgreSQL (prod)    |
+| ORM          | Prisma 6                            |
+| Validation   | Zod                                 |
+| Charts       | Recharts                            |
+| Date Utility | date-fns                            |
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18.17 or later
+- pnpm
+
+### Setup
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# Install dependencies
+pnpm install
+
+# Initialize the database and seed default categories
+pnpm prisma generate
+pnpm prisma db push
+pnpm prisma db seed
+
+# Start the development server
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command              | Description                     |
+|----------------------|---------------------------------|
+| `pnpm dev`           | Start development server        |
+| `pnpm build`         | Create production build         |
+| `pnpm start`         | Start production server         |
+| `pnpm lint`          | Run ESLint                      |
+| `pnpm prisma studio` | Open database GUI               |
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+app/
+├── (dashboard)/          # Dashboard page with charts
+├── transactions/         # Transaction CRUD pages
+├── categories/           # Category management page
+├── api/transactions/     # CSV export route handler
+├── components/           # Reusable UI and feature components
+├── lib/
+│   ├── actions/          # Server Actions (mutations)
+│   ├── services/         # Data access layer
+│   ├── validations/      # Zod schemas
+│   ├── db.ts             # Prisma client singleton
+│   ├── types.ts          # Shared TypeScript types
+│   ├── format.ts         # VND and date formatters
+│   └── csv.ts            # CSV generation utility
+└── hooks/                # Custom React hooks
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+prisma/
+├── schema.prisma         # Database schema
+└── seed.ts               # Default category seed data
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Architecture
 
-## Deploy on Vercel
+- **Server Components** handle all data fetching — no client-side state management for read operations
+- **Server Actions** with Zod validation handle all mutations
+- **URL search params** drive filter and pagination state, making views shareable and bookmarkable
+- **Prisma ORM** ensures type-safe, parameterized queries (no raw SQL)
+- Security headers (X-Content-Type-Options, X-Frame-Options, Referrer-Policy) configured via `next.config.ts`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Private project.
